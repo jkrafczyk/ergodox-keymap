@@ -78,10 +78,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |      |      |      |      |      |                                       |   0  |   0  |   .  |   =  |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
+ *                                        |RGBMOD|      |       |RGBTOG|RGBSLD|
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
+ *                                 | RGB  | RGB  |      |       |      | RGB  | RGB  |
+ *                                 | VAD  | VAI  |------|       |------| HUD  | HUI  |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -162,21 +162,6 @@ static uint32_t current_layer_state = 0;
 #define CLR_L2_ARRW {225,255,255}
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [0] = { //RIGHT
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-
-            //LEFT
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-            CLR_L1,CLR_L1,CLR_L1,CLR_L1, 
-          },
-
     [1] = { 
             //RIGHT
             CLR_L1_BASE,CLR_L1_BASE,CLR_L1_BASE,CLR_L1_BASE,CLR_L1_BASE, 
@@ -237,7 +222,6 @@ void rgb_matrix_indicators_user(void) {
         if(rgb_matrix_config.mode != 1) {
           rgb_matrix_sethsv_noeeprom(rgb_matrix_config.hue, rgb_matrix_config.sat, rgb_matrix_config.val);
         }
-        set_leds_color(0);
         break;
       case 1:
         set_leds_color(1);

@@ -1,6 +1,8 @@
 Ergodox-EZ Layout by jkrafczyk
 ==============================
 
+[KLE Link](http://www.keyboard-layout-editor.com/#/gists/19eb30824770bca1c2bd6cbebf64907e)
+
 Layers
 ------
 

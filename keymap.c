@@ -22,6 +22,9 @@ enum custom_keycodes {
 #define TAP_MACRO 1
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+//TODO: RGBTOG doesn't work correctly
+//TODO: RGBSLD and RGBMOD aren't useful in the current setup
+
 /*
  * Keymap 0: Basic layer
  *
@@ -149,8 +152,6 @@ rgb_config_t rgb_matrix_config;
 static bool is_macro1_recording = false;
 static uint32_t current_layer_state = 0;
 
-
-#define CLR_L1 {35,255,127}
 #define CLR_L1_BASE {0,0,0}
 #define CLR_L1_NUMB {35,255,255}
 #define CLR_L1_BRCE {50,255,255}
@@ -218,6 +219,7 @@ void rgb_matrix_indicators_user(void) {
     switch (layer) {
       case 0:
         rgb_matrix_config.raw = eeprom_read_dword(EECONFIG_RGB_MATRIX);
+        rgb_matrix_config.mode = RGB_MATRIX_GRADIENT_UP_DOWN;
         rgb_matrix_mode_noeeprom(rgb_matrix_config.mode);
         if(rgb_matrix_config.mode != 1) {
           rgb_matrix_sethsv_noeeprom(rgb_matrix_config.hue, rgb_matrix_config.sat, rgb_matrix_config.val);

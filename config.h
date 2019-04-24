@@ -11,3 +11,4 @@
 #define EECONFIG_RGB_MATRIX (uint32_t *)16
 #define NO_ACTION_MACRO true
 #undef NO_ACTION_TAPPING
+#define DEBOUNCE 10
